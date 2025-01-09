@@ -16,7 +16,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
-import { Menu, Phone } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -55,27 +55,26 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/80">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="font-bold text-xl">
-          {/* <Image
+          <Image
             src="/m3m-logo.png"
-            alt="IRIS BROADWAY"
+            alt="M3M Antalya Hills"
             width={110}
             height={110}
-          /> */}
-          M3M Antalya Hills
+          />
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:space-x-4">
-          <NavigationMenu>
+          <NavigationMenu className="text-white">
             <NavigationMenuList>
               {navigationItems.map(item => (
                 <NavigationMenuItem key={item.title}>
                   {item.items ? (
                     <>
-                      <NavigationMenuTrigger className="text-gray-800">
+                      <NavigationMenuTrigger className="text-white">
                         {item.title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -85,12 +84,12 @@ export default function Header() {
                               <NavigationMenuLink asChild>
                                 <a
                                   href={subItem.href}
-                                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100"
+                                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                 >
-                                  <div className="text-sm font-medium leading-none">
+                                  <div className="text-sm font-medium leading-none text-foreground">
                                     {subItem.title}
                                   </div>
-                                  <p className="line-clamp-2 text-sm leading-snug text-gray-600">
+                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                                     {subItem.description}
                                   </p>
                                 </a>
@@ -104,7 +103,7 @@ export default function Header() {
                     <NavigationMenuLink asChild>
                       <a
                         href={item.href}
-                        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 focus:outline-none text-gray-800"
+                        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10 hover:text-white focus:outline-none text-white"
                       >
                         {item.title}
                       </a>
@@ -114,18 +113,6 @@ export default function Header() {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
-
-          <Button
-            variant="outline"
-            size="sm"
-            className="hidden md:flex border-gray-300 text-gray-800 hover:bg-gray-100"
-            asChild
-          >
-            <Link href="#hero">
-              <Phone className="mr-2 h-4 w-4" />
-              Contact Us
-            </Link>
-          </Button>
         </div>
 
         {/* Mobile Navigation */}
@@ -134,22 +121,21 @@ export default function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="text-gray-800 hover:bg-gray-100"
+              className="text-white hover:bg-white/10"
             >
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="w-[300px] sm:w-[400px] bg-white"
+            className="w-[300px] sm:w-[400px] bg-black/95 border-border/40"
           >
-            <SheetTitle>
+            <SheetTitle className="text-white">
               <Image
-                src="/Logo.svg"
-                alt="IRIS BROADWAY"
-                width={150}
-                height={150}
-                className="mb-8"
+                src="/m3m-logo.png"
+                alt="M3M Antalya Hills"
+                width={110}
+                height={110}
               />
             </SheetTitle>
             <nav className="flex flex-col space-y-6 mt-8">
@@ -157,7 +143,7 @@ export default function Header() {
                 <div key={item.title}>
                   {item.items ? (
                     <div className="space-y-4">
-                      <h4 className="font-medium text-gray-800 text-lg">
+                      <h4 className="font-medium text-white text-lg">
                         {item.title}
                       </h4>
                       <div className="pl-4 space-y-4">
@@ -165,7 +151,7 @@ export default function Header() {
                           <a
                             key={subItem.title}
                             href={subItem.href}
-                            className="block text-base text-gray-600 hover:text-gray-900 transition-colors"
+                            className="block text-base text-white/70 hover:text-white transition-colors"
                             onClick={() => setIsOpen(false)}
                           >
                             {subItem.title}
@@ -176,7 +162,7 @@ export default function Header() {
                   ) : (
                     <a
                       href={item.href}
-                      className="block text-lg text-gray-800 hover:text-gray-600 transition-colors"
+                      className="block text-lg text-white hover:text-white/80 transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.title}
@@ -184,14 +170,6 @@ export default function Header() {
                   )}
                 </div>
               ))}
-              <Button
-                className="w-full mt-8 text-gray-800 hover:bg-gray-100 border-gray-300"
-                variant="outline"
-                size="lg"
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                Contact Us
-              </Button>
             </nav>
           </SheetContent>
         </Sheet>

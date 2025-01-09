@@ -4,8 +4,10 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 
 export const metadata: Metadata = {
-  title: 'M3M Antalya Hills',
-  description: 'M3M Antalya Hills',
+  title:
+    'M3M Antalya Hills - Luxury Apartments in Gurugram Beginning at ₹2.19 Cr',
+  description:
+    'Discover M3M Antalya Hills in Gurugram for opulent 1, 2, and 3-bedroom homes with contemporary conveniences, breathtaking views, and calm surroundings. Prices start at ₹2.19 Cr. Experience now the ideal fusion of sophistication and peace!',
 };
 
 export default function RootLayout({
