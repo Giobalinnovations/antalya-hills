@@ -44,8 +44,10 @@ async function sendEmail(
 
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT),
+      // host: process.env.SMTP_HOST,
+      host: 'smtp.hostinger.com',
+      // port: parseInt(process.env.SMTP_PORT),
+      port: 587,
       secure: false,
       auth: {
         user: process.env.HOSTINGER_EMAIL,
