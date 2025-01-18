@@ -53,10 +53,13 @@ async function sendEmail(
         user: process.env.HOSTINGER_EMAIL,
         pass: process.env.HOSTINGER_PASSWORD,
       },
-      tls: {
-        ciphers: 'SSLv3',
-        rejectUnauthorized: false,
-      },
+      // tls: {
+      //   ciphers: 'SSLv3',
+      //   rejectUnauthorized: false,
+      // },
+      tls: { ciphers: 'TLSv1.2' },
+      requireTLS: true,
+      debug: true,
     });
 
     console.log('Attempting to connect with config:', {
